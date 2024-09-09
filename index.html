@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" media="screen" />
+    <style type="text/css" media="screen">
+      .jumbotron {
+          text-align: center;
+          background-color: #e6ffe6
+        
+      }
+    </style>
+
+  </head>
+
+  <body>
+   <div id="elm-app-is-loaded-here"></div>
+   <script type="text/javascript" src="elm.js"></script>
+   <script type="text/javascript">
+     var app = Elm.HomePage.init({
+         node: document.getElementById("elm-app-is-loaded-here")
+     })
+   </script>
+  </body>
+</html>
