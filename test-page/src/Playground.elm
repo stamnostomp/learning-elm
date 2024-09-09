@@ -1,5 +1,6 @@
 module Playground exposing (main)
 
+import String
 import Html
 
 
@@ -39,6 +40,7 @@ multiply c d =
 divide e f =
     e / f
 
+palindrome word = word == String.revese word
 main =
     escapeEarth 10 6.7 "low"
         |> Html.text

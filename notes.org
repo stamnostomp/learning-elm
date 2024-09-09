@@ -499,3 +499,80 @@ join takes two parameters:
    - A list of strings.
 
 The separator can be anything we want.
+
+#+begin_src elm
+String.join "/" [ "Bears.", "Beats.", "Battlestar Gallactica." ]
+"Bears./Beats./Battlestar Gallactica."
+
+String.join " thatswhatshesaid " [ "Bears.", "Beats.", "Battlestar Gallactica." ]
+"Bears. thatswhatshesaid Beats. thatswhatshesaid Battlestar Gallactica."
+#+end_src
+** Splitting a String
+ We can use the split function te break a staring into multiple parts. it's the exact opposite of join.
+
+#+begin_src elm
+String.split " " "Bears. Beats. Battlestar Gallactica."
+["Bears.","Beats.","Battlestar","Gallactica."]
+
+#+end_src
+
+** Reversing a String
+
+we can reverse a string with the reverse function
+
+#+begin_src elm
+String.reverse "red"
+"der"
+
+palindrome word = word == String.reverse word -- if the word is the same as it's self reversed return ture
+#+end_src
+
+
+** Filtering a String
+
+the filter function works a little strange is elm
+
+#+begin_src elm
+String.filter '-' "222-11-5555"
+
+----------------- TYPE MISMATCH -------------------
+The 1st argument to `filter` is not what I expect:
+
+7|   String.filter '-' "222-11-5555"
+                   ^^^
+This argument is a character of type:
+
+    Char
+
+But `filter` needs the 1st argument to be:
+
+    Char -> Bool
+
+#+end_src
+
+It expects a function that takes a character and returns a boolean.
+
+
+#+begin_src elm
+isValid char = char /= '-'
+
+isValid "-"
+False
+isValid 2
+True
+#+end_src
+
+
+#+begin_src elm
+String.filter isValid "222-11-5555"
+"222115555"
+#+end_src
+
+** Anonymous Function
+
+Sometimes its desirable to inline the functon that determines whether or not a value should be filtered insted of defining it separately
+
+#+begin_src elm
+String.filter (\char -> char /= '-') "222-11-5555"
+"222115555"
+#+end_src
