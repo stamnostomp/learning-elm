@@ -56,6 +56,7 @@ we can use parentheses to change the order operaters are applied * has a higher 
 
 Elm assigns numeric precedence values to operators, with 0 being the lowest precedence and 9 being the hightest. higher precedence number is applide first
 
+
 *** associativity
 
 associativity determines if an expression with multiple ooperators is evaluated from left to right or right to left
@@ -112,8 +113,7 @@ xor - exclusive
 #+end_src
 
 elm dose not consider the number 0 or null as a synonymous with false nor non-zero to be true it must be exact
-*** Comparison
-
+** 
         +------------+------------+
         | Operator   | Meaning    |
         +------------+------------+
@@ -153,3 +153,108 @@ elm dose not consider the number 0 or null as a synonymous with false nor non-ze
         {--}
         some code
         --}
+
+* expression
+
+elm treights anything that evaluates to a value is an expression
+
+so not just expressions like
+
+#+begin_src elm
+1 + 2
+3
+#+end_src
+
+
+
+but also 
+
+#+begin_src elm
+5
+5 : number
+
+#+end_src
+because 5 already has a value of 5 it needs no further evaluation and is there for considered an expression
+
+* Constant
+
+elm lets us name expressions like
+
+#+begin_src elm
+x = (4 + 5) / 3
+4
+#+end_src
+
+we can now always refer to the expression "(4 + 5) / 3" as x
+
+elm gives the name constant to any name the defins an expression
+
+elm also give constants of its own such as pi
+
+remember that everything in elm is an expression
+** Naming Constants
+
+   constants should always be named with Camel case
+
+   we are allowed to have numbers in the name
+
+   old elm can have apostrophes but not anymore
+
+   we can have Underscores but it is against convention
+
+   we cannot have spacial characters
+   
+* If Expresssions
+
+if has 3 parts in elm
+
+1) A condition
+2) An expression to evaluate if true
+3) An expression to evaluate if false
+
+we must always provide an else case
+
+just like everything in elm an if is an expression and returns a value
+
+we can capture that value
+
+#+begin_src elm
+whatToDo = if raining then bringUnbrella else leaveUnbrella
+
+whatToDo
+bringUnbrella
+
+#+end_src
+
+we can also add more branches with else if
+
+#+begin_src elm
+if  somthing then
+    doSomthing
+   else if somthingElse then
+            doTHat
+    else
+    doNothing
+
+#+end_src
+
+* Functions 
+A function is a relationship between a set of inputs to a set of possible outputs where each input is mapped to exactly one output 
+
+#+begin_src elm
+escapeEarth myVelocity =
+    if myVelocity > 11.186 then
+        "godspeed"
+    else
+        "Come back"
+
+
+escapeEarth 11.2
+"godspeed"
+#+end_src
+like everything in elm funcons are expression and can be mapped to constants
+
+the first line of a functions defeniton much be indented atleast onec
+
+
+
