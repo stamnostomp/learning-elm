@@ -261,14 +261,13 @@ functions can be passed around just as any value like arguments
 ** Partial Function Application
        elm lets us partialy assign paramitirs
 
-      #+begin_src elm
-     multiplyByThree = multiply 3
-     multiplyByThree 4
-         12
-             multiplyByThree 5
-                15
-
-      #+end_src 
+#+begin_src elm
+multiplyByThree = multiply 3
+multiplyByThree 4
+12
+multiplyByThree 5
+15
+#+end_src
         this lets us set a paramitir then elm will return the function waiting for the next value
 ** opperators vs functions
         operaters are functions also but differ in 3 main ways
@@ -284,8 +283,219 @@ functions can be passed around just as any value like arguments
 
 let is how we can assin names to values in local scope
 
-         
+* Case Expressions
 
-        
+case expressions let use check meany valuse eficiently
+
+#+begin_src elm
+weekday dayInNumber =
+    case dayInNumber of
+        0 ->
+            "sunday"
+        1 ->
+            "monday"
+        2 ->
+            "Tuseday"
+        3 ->
+            "wendnesday"
+        4 ->
+            "thursday"
+        5 ->
+            "friday"
+        6 ->
+            "saturday"
+        _ ->
+            "unknow Day"
+#+end_src
+
+case works by matting a expression to a pattern. when a match is found, it evaluates the expression to the right of -> and returns whatever value is produced
+
+** patern Matching
+
+pattern matching is the act of checking one or more inputs again a pre-defind pattern and seeing if they match
+
+the expression after the keyword case can be anything from a simple value to a complex computation including a function.
+
+for example we can make a case that returns a hastag for each day of the week provied by the weekday function
+
+#+begin_src elm
+hastag dayInNumber =
+    case weekday dayInNumber of
+        "sunday" ->
+            "#dayofrest"
+        "monday" ->
+            "#gloomyMonday"
+
+        ect ...
+#+end_src
+
+ elm style guid says that we should be using a new line afte the -> in each case becase of ease of modification in the future
 
 
+ case should be used with patterns and if is for use with conditions that dont have apattern
+
+* Indentation
+
+elm dose not use syntactic markers such as {  } or (  ) or ; to specify code boundaries. it uses whitespace and indentainos instead
+
+** definitions
+
+*** if expressions
+if expressions must be placed inside a function defeniton, otherwise elm with throw an error.
+
+the part after then and final else should be place on the next line indented with four spaces. it's perfectly fin to place an if expression inside a let or case expression as long as they themselves are placed inside of a let or case as long as they them self's are inside a function
+
+*** let expression
+
+the code inside of a let expression should be indented by at leaste one space
+
+*** Basic Indentation Rules
+
+module, import, and top-level function definitions must start at the left most column.
+If an expression is split into multiple lines, the code that is part of that expression must be indented under that expression with at least one space.
+Parts of the expression that are grouped together should be indented with equal number of spaces. This rule is particularly important in the let area.
+* Strings
+
+ in elm, Strings are represnted with double quotes
+
+#+begin_src elm
+"pretzels"
+#+end_src
+
+and Characters are represented with single quotes:
+
+#+begin_src elm
+'p'
+#+end_src
+
+Character literals must contain exactly one character. Therefore, these expressions are not allowed in elm
+
+#+begin_src  elm
+'abc' ,  ''
+#+end_src
+
+** Multiline Strings
+
+Multi-line strings are created using """.
+
+#+begin_src  elm
+"""
+    It became very clear to me sitting out there today
+    that every decision I've made in my entire life has
+    been wrong. My life is the complete "opposite" of
+    everything I want it to be. Every instinct I have,
+    in every aspect of life, be it something to wear,
+    something to eat - it's all been wrong.
+"""
+#+end_src
+
+
+\ tells elm that the double quotes after arnt there to end the string
+
+#+begin_src elm
+"tyles awsome day out \" so that we can show the thing"
+#+end_src
+
+
+** calculating Length
+
+to calculate a string's lenght, we can use the lenght function from the String module.
+
+
+#+begin_src elm
+String.lenght "Creed bratton"
+13
+#+end_src
+
+it is a good idea to use the standard library prefix eg String.___ becasue it helps with clashing with functions from other modules but if we wish to use the function without the prefix we can use the exposing keyword
+
+#+begin_src elm
+import String exposing (length)
+
+lenght "tyle perry"
+#+end_src
+
+but we can get in to trubble fast
+
+#+begin_src elm
+import String exposing (lenght)
+import List exposing (lenght)
+
+lenght -- what function should it use???
+#+end_src
+
+this will throw an error
+
+string also has a function called isEmply that tells us wther a stirng is emply or not
+
+#+begin_src elm
+String.isEmply ""
+True
+
+String.isEmply "kyle"
+False
+#+end_src
+
+*** combing Strings
+
+++ operater is used to concatenate two strings
+
+#+begin_src elm
+"These pretzels are " ++ "makin' me thirsty!"
+"These pretzels are makin' me thirsty!"
+#+end_src
+
+
+but we cant use it combine characters or number these will throw erros
+
+one way to combine chars is to convet them to a string first. we can use the from char functon to do that
+#+begin_src elm
+(String.fromChar 'p') ++ (String.fromChar 'r')
+"pr"
+#+end_src
+
+we can also combine two string using the append function.
+
+#+begin_src elm
+String.append "Tyler" "perry"
+"Tyler perry"
+#+end_src
+
+
+for multiple strings there is a few ways
+
+one way is to use the ++
+
+#+begin_src elm
+"Bears. " ++ "Beats. " ++ "Battlestar Gallactica."
+"Bears. Beats. Battlestar Gallactica."
+#+end_src
+
+Technically speaking, the ++ operator combines only two strings. In our example above, Elm first applies ++ to "Bears. " and "Beats. " resulting in "Bears. Beats. ". It then applies ++ with "Battlestar Gallactica." as a second argument to produce the final string. We can also use append to combine more than two strings. Although it tends to get a bit verbose.
+
+#+begin_src elm
+String.append (String.append "Butter shave, " "Voice, ") "Serenity now"
+"Butter shave, Voice, Serenity now"
+#+end_src
+
+Another way of concatenating multiple string is by using the concat function which requires us to put individual string ino a list
+
+#+begin_src elm
+String.concat [ "Bears. ", "Beats. ", "Battlestar Gallactica." ]
+"Bears. Beats. Battlestar Gallactica."
+#+end_src
+
+Notice how we included the space between words as part of the individual strings themselves. That looks awkward. If we use the join function instead, we don’t have to do that.
+
+#+begin_src elm
+String.join " " [ "Bears.", "Beats.", "Battlestar Gallactica." ]
+"Bears. Beats. Battlestar Gallactica."
+#+end_src
+
+
+join takes two parameters:
+
+   - A separator that separates individual strings when they all get combined.
+   - A list of strings.
+
+The separator can be anything we want.
