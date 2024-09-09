@@ -1,0 +1,38 @@
+#+title: Nots
+
+* arithmetic
+
+** division
+
+there is two forms of division in elm
+
+1. "/" for floating point
+2. "//" for integer
+
+
+** infix vs prefix style
+
+*** infix style
+
+more traditional placing the operator in between the numerical arguments
+
+
+#+begin_src elm
+1 + 2
+3 : number
+
+42 * 10
+420 : number
+#+end_src
+
+*** prefix style
+
+more functional placing the operator infront of the numerical arguments
+
+#+begin_src elm
+(+) 1 2
+3 : number
+
+(*) 42 10
+420 : number
+#+end_src
