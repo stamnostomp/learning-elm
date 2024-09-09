@@ -100,10 +100,56 @@ and ^ is right-associative
 +------------+------------+--------------+
 
 
+* booleans
+
+  Preforming operations from Boolean algebra is also quite straightforward in ELm
+
+ #+begin_src elm
+|| - or
+&& - and
+not - negation
+xor - exclusive
+#+end_src
+
+elm dose not consider the number 0 or null as a synonymous with false nor non-zero to be true it must be exact
+*** Comparison
+
+        +------------+------------+
+        | Operator   | Meaning    |
+        +------------+------------+
+        | ==         | Equal      |
+        +------------+------------+
+        | /=         | Not Equal  |
+        +------------+------------+
+        | >          | greater    |
+        +------------+------------+
+        | <          | less than  |
+        +------------+------------+
+        | <= >=      | or equal   |
+        +------------+------------+
+        | max        | large of 2 |
+        +------------+------------+
+        | min        | small of 2 |
+        +------------+------------+
+
+        
+*** comments
 
 
+  single Line comments are done with "--"
+
+  Multi-line Comments start with "{-" and end with "-}"
+
+        
+**** tips
+        to toggle a comment you can use an extra "-" and then add in a "}" to closes it
+
+        {--
+        some code
+        
+        --}
 
 
-
-
- 
+        {--}
+        some code
+        --}
