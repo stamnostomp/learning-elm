@@ -257,4 +257,35 @@ like everything in elm funcons are expression and can be mapped to constants
 the first line of a functions defeniton much be indented atleast onec
 
 
+functions can be passed around just as any value like arguments
+** Partial Function Application
+       elm lets us partialy assign paramitirs
+
+      #+begin_src elm
+     multiplyByThree = multiply 3
+     multiplyByThree 4
+         12
+             multiplyByThree 5
+                15
+
+      #+end_src 
+        this lets us set a paramitir then elm will return the function waiting for the next value
+** opperators vs functions
+        operaters are functions also but differ in 3 main ways
+
+        1. Naming
+           operaters cant have letters or numbers in there names jsut how functions cannot have special chars in theres
+        2. number of agruments
+           operators cant have more than 2 arguments while functions have no limmits
+        3. application Style
+           oporators are applied by writing the first argument, followed by the operator, follewb by the second argument (infix style)
+           normal funcons are apllyed with prefix-style
+* Let expressions
+
+let is how we can assin names to values in local scope
+
+         
+
+        
+
 
