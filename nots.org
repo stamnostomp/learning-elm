@@ -27,7 +27,7 @@ more traditional placing the operator in between the numerical arguments
 
 *** prefix style
 
-more functional placing the operator infront of the numerical arguments
+more functional placing the operator in front of the numerical arguments
 
 #+begin_src elm
 (+) 1 2
@@ -36,3 +36,65 @@ more functional placing the operator infront of the numerical arguments
 (*) 42 10
 420 : number
 #+end_src
+
+** Operator precedence
+
+Several operators can be used in a single line.
+
+#+begin_src elm
+42 * 200 - 8000
+400
+
+(42 * 200) - 8000
+400
+
+42 * (200 - 8000)
+-327600
+#+end_src
+
+we can use parentheses to change the order operaters are applied * has a higher precedence than -. So if we want the - to be apllied first, then we must apply parentheses around its arguments.
+
+Elm assigns numeric precedence values to operators, with 0 being the lowest precedence and 9 being the hightest. higher precedence number is applide first
+
+*** associativity
+
+associativity determines if an expression with multiple ooperators is evaluated from left to right or right to left
+
+elm names are left-associative and right-associative
+
++, -, *, / are all left-associative
+
+and ^ is right-associative
+
+#+begin_src elm
+2 ^ 3 ^ 2
+512
+
+(2 ^ 3) ^ 2
+64
+#+end_src
+
++------------------+------------+--------------+
+|Operators---------| Precedence | Associativity|
+ |                  |            |              |
++------------------+------------+--------------+
+| >>               | 9          | left         |
++------------------+------------+--------------+
+| <<               | 9          | right        |
++------------------+------------+--------------+
+| ^                | 8          | right        |
++------------------+------------+--------------+
+| * / // % rem     | 7          | left         |
++------------------+------------+--------------+
+|+ -               | 6          | left         |
++------------------+------------+--------------+
+| ++ ::            | 5          | right        |
++------------------+------------+--------------+
+| == /= < > <= >  | 4          | none         |
++------------------+------------+--------------+
+| ||               | 2          | right        |
++------------------+------------+--------------+
+| |>               | 0          | left         |
++------------------+------------+--------------+
+| <|               | 0          | right        |
++------------------+------------+--------------+
