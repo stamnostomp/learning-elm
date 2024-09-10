@@ -1,44 +1,48 @@
 
 # Table of Contents
 
-1.  [arithmetic](#orgbe04edc)
-    1.  [division](#org4f0c7ce)
-    2.  [infix vs prefix style](#org0cd54a2)
-        1.  [infix style](#orgc454683)
-        2.  [prefix style](#org13b9a0b)
-    3.  [Operator precedence](#org43b1d18)
-        1.  [associativity](#org39b572c)
-2.  [booleans](#org7788fe3)
-    1.  [](#org39508ee)
-        1.  [comments](#orgd6472cc)
-3.  [expression](#orgfc6cb57)
-4.  [Constant](#org593bb09)
-    1.  [Naming Constants](#orgf612a19)
-5.  [If Expresssions](#org7e6c83b)
-6.  [Functions](#orgd85a5f2)
-    1.  [Partial Function Application](#orgb07ca18)
-    2.  [opperators vs functions](#orgc4b6593)
-7.  [Let expressions](#org54a6b1a)
-8.  [Case Expressions](#org2419b03)
-    1.  [patern Matching](#orgaed368e)
-9.  [Indentation](#org34ec390)
-    1.  [definitions](#orge8aa2b3)
-        1.  [if expressions](#org4fc8248)
-        2.  [let expression](#org60c6a5b)
-        3.  [Basic Indentation Rules](#org3674130)
-10. [Strings](#org6733426)
-    1.  [Multiline Strings](#org5e20fbf)
-    2.  [calculating Length](#org9a0425b)
-        1.  [combing Strings](#orgb062e70)
+1.  [arithmetic](#orgcf05f10)
+    1.  [division](#org1ab2e45)
+    2.  [infix vs prefix style](#orgae864d3)
+        1.  [infix style](#orga5257f6)
+        2.  [prefix style](#org2b549b4)
+    3.  [Operator precedence](#orgbed4b08)
+        1.  [associativity](#org5cdcf02)
+2.  [booleans](#orgc956e2e)
+    1.  [](#org837776b)
+        1.  [comments](#org7224505)
+3.  [expression](#org46caf96)
+4.  [Constant](#org51af270)
+    1.  [Naming Constants](#org5e38fca)
+5.  [If Expresssions](#orgac56747)
+6.  [Functions](#orgc5a7f9a)
+    1.  [Partial Function Application](#org9d9b2d3)
+    2.  [opperators vs functions](#orgb79e031)
+7.  [Let expressions](#org464b237)
+8.  [Case Expressions](#org4931df8)
+    1.  [patern Matching](#org53c7c33)
+9.  [Indentation](#orgfe487d8)
+    1.  [definitions](#orgb2d8c90)
+        1.  [if expressions](#org5aec019)
+        2.  [let expression](#orgbbf0bd9)
+        3.  [Basic Indentation Rules](#orge76052e)
+10. [Strings](#org728a64a)
+    1.  [Multiline Strings](#org4ab5879)
+    2.  [calculating Length](#orga054db2)
+        1.  [combing Strings](#org15d3802)
+    3.  [Splitting a String](#orgdb86fcf)
+    4.  [Reversing a String](#org47296db)
+    5.  [Filtering a String](#org25c6d3f)
+    6.  [Anonymous Function](#orgf2684f1)
 
 
 
-<a id="orgbe04edc"></a>
+<a id="orgcf05f10"></a>
 
 # arithmetic
 
 
-<a id="org4f0c7ce"></a>
+<a id="org1ab2e45"></a>
 
 ## division
 
@@ -48,12 +52,12 @@ there is two forms of division in elm
 2.  &ldquo;//&rdquo; for integer
 
 
-<a id="org0cd54a2"></a>
+<a id="orgae864d3"></a>
 
 ## infix vs prefix style
 
 
-<a id="orgc454683"></a>
+<a id="orga5257f6"></a>
 
 ### infix style
 
@@ -66,7 +70,7 @@ more traditional placing the operator in between the numerical arguments
     420 : number
 
 
-<a id="org13b9a0b"></a>
+<a id="org2b549b4"></a>
 
 ### prefix style
 
@@ -79,7 +83,7 @@ more functional placing the operator in front of the numerical arguments
     420 : number
 
 
-<a id="org43b1d18"></a>
+<a id="orgbed4b08"></a>
 
 ## Operator precedence
 
@@ -99,7 +103,7 @@ we can use parentheses to change the order operaters are applied \* has a higher
 Elm assigns numeric precedence values to operators, with 0 being the lowest precedence and 9 being the hightest. higher precedence number is applide first
 
 
-<a id="org39b572c"></a>
+<a id="org5cdcf02"></a>
 
 ### associativity
 
@@ -243,7 +247,7 @@ and ^ is right-associative
 </table>
 
 
-<a id="org7788fe3"></a>
+<a id="orgc956e2e"></a>
 
 # booleans
 
@@ -257,7 +261,7 @@ Preforming operations from Boolean algebra is also quite straightforward in ELm
 elm dose not consider the number 0 or null as a synonymous with false nor non-zero to be true it must be exact
 
 
-<a id="org39508ee"></a>
+<a id="org837776b"></a>
 
 ## 
 
@@ -330,7 +334,7 @@ elm dose not consider the number 0 or null as a synonymous with false nor non-ze
 </table>
 
 
-<a id="orgd6472cc"></a>
+<a id="org7224505"></a>
 
 ### comments
 
@@ -352,7 +356,7 @@ Multi-line Comments start with &ldquo;{-&rdquo; and end with &ldquo;-}&rdquo;
     &#x2013;}
 
 
-<a id="orgfc6cb57"></a>
+<a id="org46caf96"></a>
 
 # expression
 
@@ -371,7 +375,7 @@ but also
 because 5 already has a value of 5 it needs no further evaluation and is there for considered an expression
 
 
-<a id="org593bb09"></a>
+<a id="org51af270"></a>
 
 # Constant
 
@@ -389,7 +393,7 @@ elm also give constants of its own such as pi
 remember that everything in elm is an expression
 
 
-<a id="orgf612a19"></a>
+<a id="org5e38fca"></a>
 
 ## Naming Constants
 
@@ -404,7 +408,7 @@ we can have Underscores but it is against convention
 we cannot have spacial characters
 
 
-<a id="org7e6c83b"></a>
+<a id="orgac56747"></a>
 
 # If Expresssions
 
@@ -435,7 +439,7 @@ we can also add more branches with else if
         doNothing
 
 
-<a id="orgd85a5f2"></a>
+<a id="orgc5a7f9a"></a>
 
 # Functions
 
@@ -458,7 +462,7 @@ the first line of a functions defeniton much be indented atleast onec
 functions can be passed around just as any value like arguments
 
 
-<a id="orgb07ca18"></a>
+<a id="org9d9b2d3"></a>
 
 ## Partial Function Application
 
@@ -473,7 +477,7 @@ elm lets us partialy assign paramitirs
 this lets us set a paramitir then elm will return the function waiting for the next value
 
 
-<a id="orgc4b6593"></a>
+<a id="orgb79e031"></a>
 
 ## opperators vs functions
 
@@ -488,14 +492,14 @@ operaters are functions also but differ in 3 main ways
     normal funcons are apllyed with prefix-style
 
 
-<a id="org54a6b1a"></a>
+<a id="org464b237"></a>
 
 # Let expressions
 
 let is how we can assin names to values in local scope
 
 
-<a id="org2419b03"></a>
+<a id="org4931df8"></a>
 
 # Case Expressions
 
@@ -523,7 +527,7 @@ case expressions let use check meany valuse eficiently
 case works by matting a expression to a pattern. when a match is found, it evaluates the expression to the right of -> and returns whatever value is produced
 
 
-<a id="orgaed368e"></a>
+<a id="org53c7c33"></a>
 
 ## patern Matching
 
@@ -547,19 +551,19 @@ elm style guid says that we should be using a new line afte the -> in each case 
 case should be used with patterns and if is for use with conditions that dont have apattern
 
 
-<a id="org34ec390"></a>
+<a id="orgfe487d8"></a>
 
 # Indentation
 
 elm dose not use syntactic markers such as {  } or (  ) or ; to specify code boundaries. it uses whitespace and indentainos instead
 
 
-<a id="orge8aa2b3"></a>
+<a id="orgb2d8c90"></a>
 
 ## definitions
 
 
-<a id="org4fc8248"></a>
+<a id="org5aec019"></a>
 
 ### if expressions
 
@@ -568,14 +572,14 @@ if expressions must be placed inside a function defeniton, otherwise elm with th
 the part after then and final else should be place on the next line indented with four spaces. it&rsquo;s perfectly fin to place an if expression inside a let or case expression as long as they themselves are placed inside of a let or case as long as they them self&rsquo;s are inside a function
 
 
-<a id="org60c6a5b"></a>
+<a id="orgbbf0bd9"></a>
 
 ### let expression
 
 the code inside of a let expression should be indented by at leaste one space
 
 
-<a id="org3674130"></a>
+<a id="orge76052e"></a>
 
 ### Basic Indentation Rules
 
@@ -584,7 +588,7 @@ If an expression is split into multiple lines, the code that is part of that exp
 Parts of the expression that are grouped together should be indented with equal number of spaces. This rule is particularly important in the let area.
 
 
-<a id="org6733426"></a>
+<a id="org728a64a"></a>
 
 # Strings
 
@@ -601,7 +605,7 @@ Character literals must contain exactly one character. Therefore, these expressi
     'abc' ,  ''
 
 
-<a id="org5e20fbf"></a>
+<a id="org4ab5879"></a>
 
 ## Multiline Strings
 
@@ -621,7 +625,7 @@ Multi-line strings are created using &ldquo;&rdquo;".
     "tyles awsome day out \" so that we can show the thing"
 
 
-<a id="org9a0425b"></a>
+<a id="orga054db2"></a>
 
 ## calculating Length
 
@@ -654,7 +658,7 @@ string also has a function called isEmply that tells us wther a stirng is emply 
     False
 
 
-<a id="orgb062e70"></a>
+<a id="org15d3802"></a>
 
 ### combing Strings
 
@@ -703,4 +707,76 @@ join takes two parameters:
 -   A list of strings.
 
 The separator can be anything we want.
+
+    String.join "/" [ "Bears.", "Beats.", "Battlestar Gallactica." ]
+    "Bears./Beats./Battlestar Gallactica."
+    
+    String.join " thatswhatshesaid " [ "Bears.", "Beats.", "Battlestar Gallactica." ]
+    "Bears. thatswhatshesaid Beats. thatswhatshesaid Battlestar Gallactica."
+
+
+<a id="orgdb86fcf"></a>
+
+## Splitting a String
+
+We can use the split function te break a staring into multiple parts. it&rsquo;s the exact opposite of join.
+
+    String.split " " "Bears. Beats. Battlestar Gallactica."
+    ["Bears.","Beats.","Battlestar","Gallactica."]
+
+
+<a id="org47296db"></a>
+
+## Reversing a String
+
+we can reverse a string with the reverse function
+
+    String.reverse "red"
+    "der"
+    
+    palindrome word = word == String.reverse word -- if the word is the same as it's self reversed return ture
+
+
+<a id="org25c6d3f"></a>
+
+## Filtering a String
+
+the filter function works a little strange is elm
+
+    String.filter '-' "222-11-5555"
+    
+    ----------------- TYPE MISMATCH -------------------
+    The 1st argument to `filter` is not what I expect:
+    
+    7|   String.filter '-' "222-11-5555"
+                       ^^^
+    This argument is a character of type:
+    
+        Char
+    
+    But `filter` needs the 1st argument to be:
+    
+        Char -> Bool
+
+It expects a function that takes a character and returns a boolean.
+
+    isValid char = char /= '-'
+    
+    isValid "-"
+    False
+    isValid 2
+    True
+
+    String.filter isValid "222-11-5555"
+    "222115555"
+
+
+<a id="orgf2684f1"></a>
+
+## Anonymous Function
+
+Sometimes its desirable to inline the functon that determines whether or no wlt a value should be filtered insted of defining it separately
+
+    String.filter (\char -> char /= '-') "222-11-5555"
+    "222115555"
 
