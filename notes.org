@@ -570,9 +570,64 @@ String.filter isValid "222-11-5555"
 
 ** Anonymous Function
 
-Sometimes its desirable to inline the functon that determines whether or not a value should be filtered insted of defining it separately
+Sometimes its desirable to inline the functon that determines whether or no wlt a value should be filtered insted of defining it separately
 
 #+begin_src elm
 String.filter (\char -> char /= '-') "222-11-5555"
 "222115555"
+#+end_src
+
+
+** Formating Strings
+
+to format a string to all uper or lower elm provides 2 functions
+
+#+begin_src elm
+String.toUpper " I declare backruptcy!"
+String.toLower "shhh. be Quiet"
+#+end_src
+
+We can also trim unnecessary whitespcaes from a string
+
+#+begin_src elm
+String.trim " A band of backwoods   \n"
+"A band of backwoods mail-hating survivalists"
+
+String.trimLeft "   remove the front noth the back  "
+
+String.trimRight  "remove the last bit   "
+
+#+end_src
+
+** Substrings
+
+We can check for substrings using the contains function
+
+
+
+#+begin_src elm
+String.Contains "Belive" "Its no a line if you believe it."
+True
+
+String.Contains "Kyle" "This burger is awsome"
+False
+#+end_src
+
+We also have functoins for starts and ends with
+
+#+begin_src elm
+String.startsWith "Kyle" "Kyle burger"
+True
+String.endsWith "chester" "big chester"
+true
+#+end_src
+
+we can return the index of the first letter of the word with the indexes function
+
+
+#+begin_src elm
+String.indexes "burger" "yummy burger"
+[6]
+String.indexes "jump" "jump up and down jump all around"
+[0,12]
 #+end_src
