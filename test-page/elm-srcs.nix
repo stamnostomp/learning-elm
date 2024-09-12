@@ -20,6 +20,11 @@
         version = "2.0.0";
       };
 
+      "elm/regex" = {
+        sha256 = "0lijsp50w7n1n57mjg6clpn9phly8vvs07h0qh2rqcs0f1jqvsa2";
+        version = "1.0.0";
+      };
+
       "elm/bytes" = {
         sha256 = "02ywbf52akvxclpxwj9n04jydajcbsbcbsnjs53yjc5lwck3abwj";
         version = "1.0.8";

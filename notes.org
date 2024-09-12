@@ -631,3 +631,101 @@ String.indexes "burger" "yummy burger"
 String.indexes "jump" "jump up and down jump all around"
 [0,12]
 #+end_src
+
+indexes in elm will return empty if there is no occurences of the word we can also use it on mutli line functios
+*** Extracting substrings
+
+we can use the slice function to extract sub strings
+
+#+begin_src elm
+String.slice 0 8 "Chester sucks"
+chester
+#+end_src
+
+slice takes the start index of the substring but it stops at the character right before the end index
+
+we can also cound backwards
+
+#+begin_src elm
+String.slice -21 -1 "Bears. Beets. Battlestar Galactica."
+"Battlestar Galactica"
+#+end_src
+
+
+[[https:package.elm-lang.org/packages/elm/core/latest/String][Elm String docs]]
+* Regular Expressions
+
+the string functions only provide a simple way to extrat a sub string
+
+if we want more complicated extraction we can do so with the regex pacage
+
+#+begin_src elm
+> pattern = "\\d\\d:\\d\\d (a\\.m\\.|p\\.m\\.)"
+"\\d\\d:\\d\\d (a\\.m\\.|p\\.m\\.)"
+
+> maybeRegex = Regex.fromString pattern
+Just {}
+
+> regex = Maybe.withDefault Regex.never maybeRegex
+{}
+
+> apollo11 = """ \
+|   On July 16, 1969, the massive Saturn V rocket \
+|   lifted off from NASA's Kennedy Space Center at \
+|   09:32 a.m. EDT. Four days later, on July 20, Neil \
+|   Armstrong and Buzz Aldrin landed on the Moon. \
+|   """
+
+> Regex.contains regex apollo11
+True
+#+end_src
+
+** regex ruls
+*** Matching a single char
+letters and numbers match to them selfs eg A->A 2->2 (case sesnitive)
+*** Matching multiple chars
+we just need to repeat the char AAA->AAA 222->222 123->123
+*** Dot char
+the dot char is used for repeating chars the . tages the place of any char so  a... -> abc a...->abd a...->a123
+(if we want to use . as a char to match prefix with \ Dr\. Strange -> Dr. Strange)
+*** Matching a set
+
+if we want to mach chars of the same kind we can use a set [0123456789] will mach with any number [aeiou] will mach with any lowercase vowel
+but it will only match with one so [pP] will only match with p or P not both so [pP] -> p or [pP] -> P not both
+**** Using ranges to make set more succinct
+
+Set dontt scale well because every elment must be set for every set we can use ranges to define our sets faster
+
+[a-z] this will mach any lowercase char
+
+[0-9] will define every number
+
+and
+
+[A-Za-z0-9_] will match any char or number or underscore
+
+
+regex provides some common short hands
+
+
+\d will match any digit. It is short for [0-9].
+
+\w will match any word character. It is short for [A-Za-z0-9_].
+
+\s will match any whitespace character. It is short for [\t\r\n\f].
+
+\s\d will match a whitespace character followed by a digit.
+
+[\da-f] will match a hexadecimal digit. It is short for [0-9a-f]. Here we combined a shorthand with a range. We can combine expressions however we want.
+
+**** Matching alternatives
+
+Sometimes we need to match this character or that character. We can use a vertical bar for that
+
+X|Y will mach X or Y
+
+EST|PST will match either EST or PST
+
+am | a\.m | pm | p\.m will mach am or pm or a.m or p.m
+
+****
