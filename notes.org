@@ -728,4 +728,86 @@ EST|PST will match either EST or PST
 
 am | a\.m | pm | p\.m will mach am or pm or a.m or p.m
 
-****
+**** Matching zero or more characters with asterisk
+
+Asterisk ( * ) is probably the most powerful character in a regular expresion. Like the dot character, it has a special meaing. It matches zero or more of the thing that came before it.
+
+#+begin_src elm
+A* will match with aa or aaa or aaaaa
+
+ab* will match ab abb abbbb
+
+#+end_src
+
+but asterisk dosen't have to be at the end. We can put it at anypoint in our regex
+
+- a*b will match with b , ab , aab , aab ,aaaab
+- Cree*d will match Creed, Creeeeed, Creeeeeeed
+
+We cant't put it in the front though becasue then there wont't be anything to repeat. Since regular expressions don't put any limitation on how we combine expressions, we can use * with sets or ranges too.
+
+- [0-9]* will match any number of digits.
+- [a-z]* will match any number of lowercase letters.
+- [a-zA-Z0-9_]* will match any number of word characters (letters,numbers,or underscore).
+
+We can ever combine * with special shorthands like
+
+- \d* will match any number of digits
+- \w* will match any number of word characters
+- \s* will match any number of white spaces.
+
+**** Mother of all regular expressions
+
+the asterisk is probably the most powerful character in a regular expression. if we comine it with the dot character we can create the mother of all regular exressions: .*. it will match any number of any characters Basically it will match anything That is because the dot mmatches a single character and the asterisk matches any number of characters represented by the dot.
+
+how can this be unsafely?
+
+
+- */Smith will match the name of anyone whose last name is Smith
+- Cosmo.* will match the name of anyone whose first name is Cosmo.
+- .*Calgary.* will match the name that has calgary somwhere in it's
+
+**** Regular Expressions in ELm
+
+here is a regex in elm to find the launch time of Apollo 11.
+
+#+begin_src elm
+import Regex
+
+pattern = "\\d\\d:\\d\\d (a\\.m\\.|p\\.m\\.)"
+
+maybeRegex = Regex.fromString pattern
+
+regex = Maybe.withDefault Regex.never maybeRegex
+
+apollo11 = """ \
+   On July 16, 1969, the massive Saturn V rocket \
+   lifted off from NASA's Kennedy Space Center at \
+   09:32 a.m. EDT. Four days later, on July 20, Neil \
+   Armstrong and Buzz Aldrin landed on the Moon. \
+            """
+
+Regex.contains  regex apollo11
+True
+#+end_src
+
+
+lets break this code down
+
+
+#+begin_src elm
+import Regex
+#+end_src
+
+Regex needs to be installed and imported as its not preloaded in elm
+
+
+#+begin_src elm
+pattern = "\\d\\d:\\d\\d (a\\.m\\.|p\\.m\\.)"
+#+end_src
+
+in this pattern \\d matches with any didgit
+
+- \ vs \\
+
+  when we wer looking at regual expression we only used one \
